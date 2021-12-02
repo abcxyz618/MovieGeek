@@ -1,11 +1,11 @@
 import json
 import requests
 import os
-from boto.s3.connection import S3Connection
+
 
 # get ratings & actors & directors # release date # domestic box office
 def omdb_search(name='Avengers Endgame', year=2019):
-    api_key = S3Connection(os.environ['OMDb_API_KEY'])
+    api_key = os.environ.get('OMDb_API_KEY')
     url = 'https://www.omdbapi.com'
     params = (
         ('t', name),
