@@ -1,6 +1,5 @@
 discord.py
 boto
-json
 requests
 io
 PIL
