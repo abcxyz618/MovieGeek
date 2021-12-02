@@ -1,5 +1,4 @@
 discord.py
 boto
 requests
-PIL
-os
+
