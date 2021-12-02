@@ -76,3 +76,5 @@ def config_revenue(revenue):
 
     return f'(US: {revenue[:revenue.find(",")]}M)'
 
+#
+
