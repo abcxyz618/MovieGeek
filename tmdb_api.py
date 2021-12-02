@@ -3,10 +3,11 @@ import requests
 import os
 from io import BytesIO
 from PIL import Image
+from boto.s3.connection import S3Connection
 
 
 def tmdb_search(name='Avengers Endgame', index=0):
-    api_key = os.environ.get('TMDB_API_KEY')
+    api_key = S3Connection(os.environ['TMDB_API_KEY'])
     url = 'https://api.themoviedb.org/3/search/movie'
     image_base_url = 'https://image.tmdb.org/t/p/w500'
     params = (
@@ -42,9 +43,9 @@ def tmdb_search(name='Avengers Endgame', index=0):
     overview = data['overview']
 
     poster_url = image_base_url + data['poster_path'] \
-        if data['poster_path'] is not None else os.environ.get('GIF_address_1')
+        if data['poster_path'] is not None else S3Connection(os.environ['GIF_address_1'])
     comp_url = data['production_companies'][0]['logo_path']
-    comp_url = image_base_url + comp_url if comp_url is not None else os.environ.get('GIF_address_2')
+    comp_url = image_base_url + comp_url if comp_url is not None else S3Connection(os.environ['GIF_address_2'])
     trailer_url = get_trailer_url(data) if get_trailer_url(data) is not False else "N/A"
     color_tuple = config_img(poster_url)
 
