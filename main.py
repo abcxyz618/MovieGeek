@@ -1,7 +1,6 @@
 import os
 import discord
 from discord.ext import commands
-from boto.s3.connection import S3Connection
 
 
 bot = commands.Bot(command_prefix="*", case_insensitive=True, help_command=None)
@@ -27,4 +26,4 @@ async def on_ready():
     print('--------------------------')
 
 
-bot.run(S3Connection(os.environ['TOKEN']))
+bot.run(os.environ.get('TOKEN'))
