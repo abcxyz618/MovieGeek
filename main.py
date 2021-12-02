@@ -4,8 +4,6 @@ from discord.ext import commands
 from boto.s3.connection import S3Connection
 
 
-load_dotenv()
-
 bot = commands.Bot(command_prefix="*", case_insensitive=True, help_command=None)
 
 extensions = ['misc', 'commands']
