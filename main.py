@@ -1,7 +1,7 @@
 import os
 import discord
 from discord.ext import commands
-from dotenv import load_dotenv
+from boto.s3.connection import S3Connection
 
 
 load_dotenv()
@@ -29,4 +29,4 @@ async def on_ready():
     print('--------------------------')
 
 
-bot.run(os.environ.get('TOKEN'))
+bot.run(S3Connection(os.environ['TOKEN']))
